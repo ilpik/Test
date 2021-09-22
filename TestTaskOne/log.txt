@@ -1,3 +1,3 @@
-2021-09-21T03:59:06+2615    Info   Info message in File
-2021-09-21T03:59:06+2615    Error   Error message in File
-2021-09-21T03:59:06+2615    Warning   Warning message in File
+2021-09-22T03:37:17+5783	Info	Информация
+2021-09-22T03:37:17+6212	Error	Ошибка
+2021-09-22T03:37:17+6223	Warning	Предупреждение

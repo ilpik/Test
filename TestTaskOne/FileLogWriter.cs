@@ -9,49 +9,41 @@ namespace TestTaskOne
 {
     public class FileLogWriter : ILogWriter
     {
-        private string Date { get; set; }
-        private string MessageType { get; set; }
-        public FileLogWriter(string date)
+        private string WritePath { get; set; }
+
+        public FileLogWriter(string writePath)
         {
-            Date = date;
+            WritePath = writePath;
         }
 
         public void LogInfo(string message)
         {
-            MessageType = "Info";
-            WriteInFile( MessageType, message);
+            WriteInFile(message);
         }
 
         public void LogWarning( string message)
         {
-            MessageType = "Warning";
-            WriteInFile(MessageType, message);
+            WriteInFile(message);
         }
 
         public void LogError( string message)
         {
-            MessageType = "Error";
-            WriteInFile(MessageType, message);
+            WriteInFile(message);
         }
 
-        private void WriteInFile( string messageType, string message)
+        private void WriteInFile(string message)
         {
-         var writePath = @"..\\..\\..\\log.txt";
-         var logString = $"{Date}    {messageType}   {message}";
-
-         try
-         {
-             using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-             {
-                 sw.WriteLine(logString);
-             }
-
-             //Console.WriteLine("Запись выполнена");
-         }
-         catch (Exception e)
-         {
-             Console.WriteLine(e.Message);
-         }
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(WritePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine(message);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

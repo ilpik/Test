@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestTaskOne
 {
-    interface ILogWriter
+    public interface ILogWriter
     {
         public void LogInfo(string message);
         public void LogWarning(string message);
