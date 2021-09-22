@@ -7,9 +7,10 @@ namespace TestTaskOne
         static void Main(string[] args)
         {
             var writePath = @"..\\..\\..\\log.txt";
+            MessageFormatter formatter = new MessageFormatter();
 
-            FileLogWriter fileWriter = new FileLogWriter(writePath);
-            ConsoleLogWriter consoleWriter = new ConsoleLogWriter();
+            FileLogWriter fileWriter = new FileLogWriter(writePath, formatter);
+            ConsoleLogWriter consoleWriter = new ConsoleLogWriter(formatter);
             MultipleLogWriter multipleWriter = new MultipleLogWriter(consoleWriter, fileWriter);
             
             multipleWriter.LogInfo("Информация");

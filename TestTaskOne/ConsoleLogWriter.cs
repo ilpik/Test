@@ -6,39 +6,34 @@ using System.Threading.Tasks;
 
 namespace TestTaskOne
 {
-    public class ConsoleLogWriter : ILogWriter, IMessageFormatter
+    public class ConsoleLogWriter : ILogWriter
     {
+        private IMessageFormatter _formatter { get; set; }
+        public ConsoleLogWriter(IMessageFormatter messageFormatter)
+        {
+            _formatter = messageFormatter;
+        }
         public void LogInfo(string message)
         {
-            var mes = FormatMessage(message, LogLevel.Info);
-            WriteInConsole(mes);
+
+            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Info));
         }
 
         public void LogWarning(string message)
         {
-            var mes = FormatMessage(message, LogLevel.Warning);
-            WriteInConsole(mes);
+
+            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Warning));
         }
 
         public void LogError(string message)
         {
-            var mes = FormatMessage(message, LogLevel.Error);
-            WriteInConsole(mes);
+            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Error));
         }
 
         private void WriteInConsole(string message)
         {
             Console.WriteLine(message);
         }
-        public string FormatMessage(string message, LogLevel logLevel)
-        {
-            string level = logLevel switch
-            {
-                LogLevel.Info => "Info",
-                LogLevel.Error => "Error",
-                LogLevel.Warning => "Warning"
-            };
-            return $"{DateTime.Now:yyyy-MM-ddTHH:mm:ss+FFFF}\t{level}\t{message}";
-        }
+        
     }
 }
