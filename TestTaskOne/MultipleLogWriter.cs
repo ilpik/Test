@@ -38,7 +38,5 @@ namespace TestTaskOne
                 writer.LogError(message);
             }
         }
-
-        
     }
 }

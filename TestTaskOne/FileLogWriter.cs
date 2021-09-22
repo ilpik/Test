@@ -9,32 +9,32 @@ namespace TestTaskOne
 {
     public class FileLogWriter : ILogWriter
     {
-        private string WritePath { get; set; }
-        private IMessageFormatter _formatter { get; set; }
+        private string _writePath;
+        private IMessageFormatter _formatter;
         public FileLogWriter(string writePath, IMessageFormatter formatter)
         {
-            WritePath = writePath;
+            _writePath = writePath;
             _formatter = formatter;
         }
 
         public void LogInfo(string message)
         {
-            WriteInFile((_formatter.FormatMessage(message, LogLevel.Info)));
+            WriteInFile(_formatter.FormatMessage(message, LogLevel.Info));
         }
 
         public void LogWarning( string message)
         {
-            WriteInFile((_formatter.FormatMessage(message, LogLevel.Warning)));
+            WriteInFile(_formatter.FormatMessage(message, LogLevel.Warning));
         }
 
         public void LogError( string message)
         {
-            WriteInFile((_formatter.FormatMessage(message, LogLevel.Error)));
+            WriteInFile(_formatter.FormatMessage(message, LogLevel.Error));
         }
 
         private void WriteInFile(string message)
         {
-            File.AppendAllText(WritePath,message + "\r\n");
+            File.AppendAllText(_writePath,message + "\r\n");
         }
     }
 }
