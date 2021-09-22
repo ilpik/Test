@@ -8,8 +8,8 @@ namespace TestTaskOne
 {
     public interface ILogWriter
     {
-        public void LogInfo(string message);
-        public void LogWarning(string message);
-        public void LogError(string message);
+        void LogInfo(string message);
+        void LogWarning(string message);
+        void LogError(string message);
     }
 }

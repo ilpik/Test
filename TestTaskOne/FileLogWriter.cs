@@ -19,22 +19,22 @@ namespace TestTaskOne
 
         public void LogInfo(string message)
         {
-            WriteInFile(_formatter.FormatMessage(message, LogLevel.Info));
+            WriteInFile(message,LogLevel.Info);
         }
 
         public void LogWarning( string message)
         {
-            WriteInFile(_formatter.FormatMessage(message, LogLevel.Warning));
+            WriteInFile(message, LogLevel.Warning);
         }
 
         public void LogError( string message)
         {
-            WriteInFile(_formatter.FormatMessage(message, LogLevel.Error));
+            WriteInFile(message, LogLevel.Error);
         }
 
-        private void WriteInFile(string message)
+        private void WriteInFile(string message, LogLevel logLevel)
         {
-            File.AppendAllText(_writePath,message + "\r\n");
+            File.AppendAllText(_writePath, _formatter.FormatMessage(message, logLevel) + "\r\n");
         }
     }
 }

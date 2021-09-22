@@ -6,7 +6,7 @@ namespace TestTaskOne
     {
         static void Main(string[] args)
         {
-            var writePath = @"..\\..\\..\\log.txt";
+            var writePath = @"..\..\..\log.txt";
             MessageFormatter formatter = new MessageFormatter();
 
             FileLogWriter fileWriter = new FileLogWriter(writePath, formatter);

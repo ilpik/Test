@@ -15,22 +15,22 @@ namespace TestTaskOne
         }
         public void LogInfo(string message)
         {
-            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Info));
+            WriteInConsole(message, LogLevel.Info);
         }
 
         public void LogWarning(string message)
         {
-            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Warning));
+            WriteInConsole(message, LogLevel.Warning);
         }
 
         public void LogError(string message)
         {
-            WriteInConsole(_formatter.FormatMessage(message, LogLevel.Error));
+            WriteInConsole(message, LogLevel.Error);
         }
 
-        private void WriteInConsole(string message)
+        private void WriteInConsole(string message, LogLevel logLevel)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(_formatter.FormatMessage(message, logLevel));
         }
         
     }
