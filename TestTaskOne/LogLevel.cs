@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestTaskOne
 {
-    public class Enum
-    {
-        public enum LogLevel
-        {
-            Info,
-            Warning,
-            Error
-        }
+    public enum LogLevel 
+    { 
+        Info, 
+        Warning, 
+        Error
     }
 }

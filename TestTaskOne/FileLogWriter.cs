@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestTaskOne
 {
-    public class FileLogWriter : ILogWriter
+    public class FileLogWriter : ILogWriter, IMessageFormatter
     {
         private string WritePath { get; set; }
 
@@ -18,32 +18,35 @@ namespace TestTaskOne
 
         public void LogInfo(string message)
         {
-            WriteInFile(message);
+            var mes = FormatMessage(message, LogLevel.Info);
+            WriteInFile(mes);
         }
 
         public void LogWarning( string message)
         {
-            WriteInFile(message);
+            var mes = FormatMessage(message, LogLevel.Warning);
+            WriteInFile(mes);
         }
 
         public void LogError( string message)
         {
-            WriteInFile(message);
+            var mes = FormatMessage(message, LogLevel.Error);
+            WriteInFile(mes);
         }
 
         private void WriteInFile(string message)
         {
-            try
+            File.AppendAllText(WritePath,message + "\r\n");
+        }
+        public string FormatMessage(string message, LogLevel logLevel)
+        {
+            string level = logLevel switch
             {
-                using (StreamWriter sw = new StreamWriter(WritePath, true, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine(message);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+                LogLevel.Info => "Info",
+                LogLevel.Error => "Error",
+                LogLevel.Warning => "Warning"
+            };
+            return $"{DateTime.Now:yyyy-MM-ddTHH:mm:ss+FFFF}\t{level}\t{message}";
         }
     }
 }

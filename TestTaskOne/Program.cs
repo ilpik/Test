@@ -6,7 +6,6 @@ namespace TestTaskOne
     {
         static void Main(string[] args)
         {
-            var date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss+FFFF");
             var writePath = @"..\\..\\..\\log.txt";
 
             FileLogWriter fileWriter = new FileLogWriter(writePath);

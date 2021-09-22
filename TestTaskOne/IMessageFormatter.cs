@@ -8,6 +8,6 @@ namespace TestTaskOne
 {
     public interface IMessageFormatter
     {
-        string FormatMessage(string message, Enum.LogLevel logLevel);
+        string FormatMessage(string message, LogLevel logLevel);
     }
 }
